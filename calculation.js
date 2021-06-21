@@ -121,14 +121,17 @@ function theme() {
         let stylesheet = document.getElementById("style");
         stylesheet.removeAttribute("href");
         stylesheet.href = "./theme2.css";
-
-    } else if (after == "..") {
+    } 
+    
+    else if (after == "..") {
         document.getElementById("agot").innerHTML = "....";
         document.getElementById("pisot").innerHTML = "";
         let stylesheet = document.getElementById("style");
         stylesheet.removeAttribute("href");
         stylesheet.href = "./theme3.css";
-    } else {
+    } 
+    
+    else {
         document.getElementById("agot").innerHTML = "";
         document.getElementById("pisot").innerHTML = "....";
         let stylesheet = document.getElementById("style");
