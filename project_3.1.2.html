@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project_3</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap');
+        html,body{
+            margin: 0px;
+        }
+        .container{
+            display:grid;
+            grid-template-rows:200px 150px 500px;
+            background-color: hsl(0, 0%, 90%);
+            max-width: 100vmax;
+            justify-content: center;
+            height:200vmin;  
+        }
+        .header{
+            grid-row-start: 1;
+            grid-row-end: 2;
+            color: white;
+            font-family: 'Spartan', sans-serif;
+            font-size: 32px;
+            align-self: end;
+            padding-bottom: 30px;
+            grid-template-columns: 1fr 1fr;
+            display:grid;
+            color: hsl(60,10%,19%);
+        }
+        .calc{
+            grid-column-start: 1;
+            grid-column-end:2 ;
+        }
+        .switch{
+            grid-column-start: 2;
+            grid-column-end:3 ;
+            font-size: 15px;
+            justify-self: end;
+        }
+        #box:hover{
+            cursor:pointer;
+        }
+        #box{
+            min-width: 100px;
+            background-color: hsl(0, 5%, 81%);
+            color: hsl(0, 5%, 81%);
+            border-radius: 50px;
+            padding-right: 5px;
+            padding-bottom: 7px;
+            padding-left: 5px;
+            font-size: 32px;
+            margin-left: 20px;
+        }
+        #circle{
+            height: 10px;
+            background-color: hsl(25, 98%, 40%);
+            color: hsl(25, 98%, 40%);
+            border-radius: 50%;
+            font-size:20px; 
+        }
+        a{
+            color: none;
+            text-decoration: none;
+        }
+        #agot,#pisot{
+            color: hsl(0, 5%, 81%);
+        }
+        .display{
+            grid-row-start: 2;
+            grid-row-end: 3;
+            width: 600px;
+            background-color: hsl(0, 0%, 93%);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            color: hsl(60,10%,19%);
+            font-family: 'Spartan', sans-serif;
+            font-size: 32px;
+            text-align: end;
+            padding-right: 30px;
+            padding-top: 65px; 
+            font-size: 40px;  
+            /* box-shadow: 5px 5px 5px #ffffff85;          */
+        }
+        .keys{
+            grid-row-start: 3;
+            grid-row-end: 4;
+            width: 600px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(5,1fr);
+            justify-content: center;
+            align-content: center;
+            background-color: hsl(0, 5%, 81%);
+            border-radius: 10px;
+            padding: 15px;
+            color: hsl(60, 10%, 19%);
+            font-family: 'Spartan', sans-serif;
+            font-size: 32px;
+            text-align: center;
+        }
+        .buttons{
+            padding-top: 18px;
+            background-color: hsl(45, 7%, 89%);
+            margin: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 1px hsl(35, 11%, 61%);
+        }
+        #btn_reset{
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+        #btn_reset,#btn_del{
+            background-color: hsl(185, 42%, 37%);
+            color: white;
+            box-shadow: 0px 4px 1px hsl(185, 58%, 25%);
+        }
+        #btn_eq{
+            grid-column-start: 3;
+            grid-column-end: 5;
+            background-color: hsl(25, 98%, 40%);
+            color: white;
+            box-shadow: 0px 4px 1px hsl(25, 99%, 27%);
+        }
+        .buttons:hover{
+            cursor: pointer;
+            box-shadow: 0px 5px 1px ;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="calc">calc</span>
+            <span class="switch">THEME
+                <span id="box" onclick="theme()">
+                    <a href="./project_3.1.3.html" onclick="theme()">
+                        <span id="agot">..</span>
+                        <span id="circle" >...</span>
+                        <span id="pisot">..</span>
+                    </a>
+                </span>
+                <!-- <label for="theme">
+                    <input type="checkbox" name="" id="slide">
+                    <span></span>
+                </label> -->
+            </span>
+        </div>
+        <div class="display" id="screen">
+         
+        </div>
+        <div class="keys">
+            <span class="buttons" id="btn_7" onclick="add7()">7</span>
+            <span class="buttons" id="btn_8" onclick="add8()">8</span>
+            <span class="buttons" id="btn_9" onclick="add9()">9</span>
+            <span class="buttons" id="btn_del" onclick="del()">Del</span>
+            <span class="buttons" id="btn_4" onclick="add4()">4</span>
+            <span class="buttons" id="btn_5" onclick="add5()">5</span>
+            <span class="buttons" id="btn_6" onclick="add6()">6</span>
+            <span class="buttons" id="btn_+" onclick="add()">+</span>
+            <span class="buttons" id="btn_1" onclick="add1()">1</span>
+            <span class="buttons" id="btn_2" onclick="add2()">2</span>
+            <span class="buttons" id="btn_3" onclick="add3()">3</span>
+            <span class="buttons" id="btn_min" onclick="sub()">-</span>
+            <span class="buttons" id="btn_." onclick="adddt()">. </span>
+            <span class="buttons" id="btn_0" onclick="add0()">0</span>
+            <span class="buttons" id="btn_/" onclick="div()">/</span>
+            <span class="buttons" id="btn_x" onclick="mul()">X</span>
+            <span class="buttons" id="btn_reset" onclick="reset()">RESET</span>
+            <span class="buttons" id="btn_eq" onclick="equ()">=</span>
+        </div>
+    </div>
+</body>
+<script>
+    function add1() {
+        document.getElementById("screen").innerHTML+=1;
+    }
+    function add2() {
+        document.getElementById("screen").innerHTML+=2;
+    }
+    function add3() {
+        document.getElementById("screen").innerHTML+=3;
+    }
+    function add4() {
+        document.getElementById("screen").innerHTML+=4;
+    }
+    function add5() {
+        document.getElementById("screen").innerHTML+=5;
+    }
+    function add6() {
+        document.getElementById("screen").innerHTML+=6;
+    }
+    function add7() {
+        document.getElementById("screen").innerHTML+=7;
+    }
+    function add8() {
+        document.getElementById("screen").innerHTML+=8;
+    }
+    function add9() {
+        document.getElementById("screen").innerHTML+=9;
+    }
+    function add0() {
+        document.getElementById("screen").innerHTML+=0;
+    }
+    function adddt() {
+        document.getElementById("screen").innerHTML+=".";
+    }
+    function reset() {
+        document.getElementById("screen").innerHTML="";
+    }
+    function del() {
+        let content = document.getElementById("screen").textContent
+        cont=content.slice(0,-1);
+        // console.log(cont);
+        document.getElementById("screen").innerHTML=cont;
+    }
+
+
+    function add() {
+        let content = document.getElementById("screen");
+        content.innerHTML+="+"
+        // let a = content + 5;
+        // console.log(a);
+    }
+    function sub() {
+        let content = document.getElementById("screen");
+        content.innerHTML+="-"
+    }
+    function mul() {
+        let content = document.getElementById("screen");
+        content.innerHTML+="X"
+    }
+    function div() {
+        let content = document.getElementById("screen");
+        content.innerHTML+="/"
+    }
+    function equ() {
+        let content = document.getElementById("screen").textContent;
+        cont=parseFloat(content);
+        if (content.includes("+")) {
+            console.log("ki beh");
+            let iplus=content.indexOf("+");
+            let cont2=content.slice(iplus,);
+            cont2=parseFloat(cont2);
+            let result= cont+cont2;
+            document.getElementById("screen").innerHTML=result;
+        }
+        else if (content.includes("-")) {
+            console.log("true");
+            let iminus=content.indexOf("-");
+            let cont2=content.slice(iminus+1,);
+            num2=parseFloat(cont2);
+            let result= cont-num2;
+            document.getElementById("screen").innerHTML=result;
+        }
+        else if (content.includes("X")) {
+            console.log("xxx");
+            let imul=content.indexOf("X");
+            let cont2=content.slice(imul+1,);
+            num2=parseFloat(cont2);
+            let result= cont*num2;
+            document.getElementById("screen").innerHTML=result;
+        }
+        else if (content.includes("/")) {
+            console.log("true");
+            let idiv=content.indexOf("/");
+            let cont2=content.slice(idiv+1,);
+            num2=parseFloat(cont2);
+            let result= cont/num2;
+            document.getElementById("screen").innerHTML=result;
+        }
+    }
+
+    function theme() {
+        let before=document.getElementById("agot").textContent;
+        let after=document.getElementById("pisot").textContent;
+        if (after=="....") {
+            document.getElementById("agot").innerHTML="..";
+            document.getElementById("pisot").innerHTML="..";
+
+        }
+        else if (after=="..") {
+            document.getElementById("agot").innerHTML="....";
+            document.getElementById("pisot").innerHTML="";
+        }
+        else{
+            document.getElementById("agot").innerHTML="";
+            document.getElementById("pisot").innerHTML="....";
+        }
+    }
+</script>
+</html>
