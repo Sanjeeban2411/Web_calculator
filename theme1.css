@@ -143,3 +143,15 @@ a {
     cursor: pointer;
     box-shadow: 0px 5px 1px;
 }
+
+@media screen and (max-width: 640px) {
+    .container {
+        width: 150vmin;
+        height: 150vmax;
+    }
+    .header,
+    .display,
+    .keys {
+        width: 440px;
+    }
+}
