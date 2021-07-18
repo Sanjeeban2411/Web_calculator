@@ -144,6 +144,7 @@ a {
     .container {
         width: 150vmin;
         height: 150vmax;
+        zoom: 0.67;
     }
     .header,
     .display,
